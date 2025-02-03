@@ -3,6 +3,7 @@ EXPOSE 8080
 ENV DB_HOST=mysql
 # Install MySQL client and required dependencies
 RUN apk add --no-cache mysql-client
+RUN apk add --no-cache su-exec
 RUN addgroup -S expense && adduser -S expense -G expense \
     && mkdir /opt/server \
     && chown expense:expense -R /opt/server
