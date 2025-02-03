@@ -1,8 +1,7 @@
 FROM node:20.15.0-alpine3.20
 EXPOSE 8080
 ENV DB_HOST=mysql
-USER root
-RUN apk add --no-cache mysql-client su-exec sudo
+USER root 
 # Install MySQL client and required dependencies
 RUN apk add --no-cache mysql-client
 RUN apk add --no-cache su-exec
