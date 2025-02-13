@@ -1,3 +1,3 @@
-FROM amazonlinux:9
+FROM almalinux:9
 RUN yum install telnet -y
-CMD [ "sleep", "20000" ] 
+CMD [ "sleep","20000" ]
