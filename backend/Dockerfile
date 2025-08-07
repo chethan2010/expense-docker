@@ -14,7 +14,7 @@ COPY *.js /opt/server/
 # Install mysql-client and app dependencies
 RUN npm install 
 
-# USER expense
+USER root
 
 EXPOSE 8080
 CMD ["node", "index.js"]
