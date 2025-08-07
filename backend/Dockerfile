@@ -12,12 +12,9 @@ COPY package.json .
 COPY *.js /opt/server/
 
 # Install mysql-client and app dependencies
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends default-mysql-client && \
-    npm install && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN npm install 
 
-USER expense
+# USER expense
 
 EXPOSE 8080
 CMD ["node", "index.js"]
