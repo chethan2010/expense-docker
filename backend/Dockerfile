@@ -14,9 +14,11 @@ WORKDIR /opt/server
 COPY package.json .
 COPY *.js /opt/server/
 
-# Install dependencies
-RUN npm install
-
+# Install dependencies and mysql client as root
+RUN apt-get update && apt-get install -y mysql-client \
+    && npm install \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    
 # Use non-root user
 USER expense
 
