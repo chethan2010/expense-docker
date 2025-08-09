@@ -15,7 +15,7 @@ COPY *.js /opt/server/
 
 RUN npm install 
 
-USER Root
+USER root
 
 EXPOSE 8080
 CMD ["node", "index.js"]
