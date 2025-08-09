@@ -98,8 +98,7 @@ app.get('/transaction/id',(req,res)=>{
     }
 });
 
-  app.listen(port, () => {
-    t=moment().unix()
-    console.log("{ \"timestamp\" : %d, \"msg\" : \"App Started on Port %s\" }", t,  port)
-  })
+  app.listen(port, '0.0.0.0', () => {
+  console.log(`App Started on Port ${port}`);
+});
 //
