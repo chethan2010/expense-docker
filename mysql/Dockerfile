@@ -1,9 +1,10 @@
-FROM mysql:9.0
-RUN adduser -r expense
+FROM mysql:8.4
+
+# Set up environment variables for MySQL init
 ENV MYSQL_ROOT_PASSWORD=ExpenseApp@1 \
     MYSQL_USER=expense \
     MYSQL_PASSWORD=ExpenseApp@1 \
-    MYSQL_DATABASE=transactions 
-RUN chown -R expense:expense /var/lib/mysql  /var/run/mysqld
-COPY scripts/*.sql /docker-entrypoint-intdb.d/
+    MYSQL_DATABASE=transactions
 
+# Copy your initialization scripts
+COPY scripts/*.sql /docker-entrypoint-initdb.d/
