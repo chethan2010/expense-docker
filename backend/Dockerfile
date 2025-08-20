@@ -1,21 +1,21 @@
 FROM node:20.15.0-alpine3.20
-EXPOSE 8080
-ENV DB_HOST=mysql
 
-# Create user and app directory
+ENV DB_HOST=mysql
+EXPOSE 8080
+
+RUN apk add --no-cache mysql-client
+
 RUN addgroup -S expense && adduser -S expense -G expense \
     && mkdir /opt/server \
-    && chown expense:expense -R /opt/server
+    && chown expense:expense /opt/server
 
 WORKDIR /opt/server
 
-COPY package.json .
-COPY *.js /opt/server/
+COPY package.json package-lock.json* ./
+RUN npm install --production
 
+COPY *.js ./
 
-RUN npm install 
+USER expense
 
-USER root
-
-EXPOSE 8080
 CMD ["node", "index.js"]
