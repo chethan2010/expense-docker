@@ -7,10 +7,6 @@ CREATE TABLE IF NOT EXISTS transactions (
     description VARCHAR(255)
 );
 
--- Create user with native password plugin
-CREATE USER IF NOT EXISTS 'expense'@'%' 
-  IDENTIFIED WITH mysql_native_password BY 'ExpenseApp@1';
-
-GRANT ALL PRIVILEGES ON transactions.* TO 'expense'@'%';
-
+CREATE USER IF NOT EXISTS 'expense'@'%' IDENTIFIED BY 'ExpenseApp@1';
+GRANT ALL ON transactions.* TO 'expense'@'%';
 FLUSH PRIVILEGES;
