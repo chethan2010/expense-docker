@@ -7,9 +7,9 @@ CREATE TABLE IF NOT EXISTS transactions (
     description VARCHAR(255)
 );
 
--- Create the user with mysql_native_password plugin for compatibility
+-- Create the user with default authentication plugin (MySQL 8+ uses caching_sha2_password)
 CREATE USER IF NOT EXISTS 'expense'@'%' 
-  IDENTIFIED WITH mysql_native_password BY 'ExpenseApp@1';
+  IDENTIFIED BY 'ExpenseApp@1';
 
 GRANT ALL PRIVILEGES ON transactions.* TO 'expense'@'%';
 
